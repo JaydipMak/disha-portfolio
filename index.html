@@ -1,106 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Disha Jogi | iOS Developer</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disha Jogi | Premium iOS Developer</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header class="navbar">
-  <div class="logo">Disha Jogi</div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
 
-<section class="hero">
-  <h1 class="fade-up">Building Scalable iOS Apps</h1>
-  <p class="fade-up delay-1">
-    Swift | SwiftUI | MVVM | CI/CD | App Store Deployment
-  </p>
-  <a href="#experience" class="btn fade-up delay-2">Explore Work</a>
-</section>
+  <header class="navbar hidden-load">
+    <div class="logo">Disha.dev</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<section id="about" class="section fade-in">
-  <h2>About Me</h2>
-  <p>
-    iOS Developer with 2.5+ years of experience building scalable,
-    high-performance iOS applications using Swift, SwiftUI, UIKit and MVVM.
-    Experienced in CI/CD automation, Firebase integration, unit testing,
-    localization and complete App Store lifecycle.
-  </p>
-</section>
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="glitch-text hidden-load delay-1">Building Scalable<br><span class="highlight">iOS Experiences</span></h1>
+      <p class="hidden-load delay-2">
+        Swift • SwiftUI • MVVM • CI/CD • App Store
+      </p>
+      <a href="#experience" class="btn hidden-load delay-3">Explore Work</a>
+    </div>
+  </section>
 
-<section id="experience" class="section">
-  <h2>Professional Experience</h2>
+  <section id="about" class="section reveal">
+    <h2 class="section-title">About Me</h2>
+    <p class="about-text">
+      iOS Developer with 2.5+ years of experience building scalable,
+      high-performance iOS applications. Specializing in Swift, SwiftUI, and MVVM architecture.
+      Experienced in CI/CD automation, Firebase integration, and the complete App Store lifecycle.
+    </p>
+  </section>
 
-  <div class="card fade-up">
-    <h3>Wald Solutions</h3>
-    <span>July 2024 — March 2025</span>
-    <ul>
-      <li>Developed Gujarati kids learning apps (iPhone & iPad)</li>
-      <li>Implemented MVVM architecture</li>
-      <li>CI/CD using GitHub Actions</li>
-      <li>Managed App Store releases</li>
-    </ul>
-  </div>
+  <section id="experience" class="section">
+    <h2 class="section-title reveal">Professional Experience</h2>
+    <div class="cards-container">
+      
+      <div class="card reveal spotlight-card">
+        <div class="card-content">
+          <h3>Wald Solutions</h3>
+          <span class="date-badge">July 2024 — March 2025</span>
+          <ul>
+            <li>Developed Gujarati kids learning apps (iPhone & iPad)</li>
+            <li>Implemented clean MVVM architecture</li>
+            <li>CI/CD automation using GitHub Actions</li>
+            <li>Managed App Store releases</li>
+          </ul>
+        </div>
+      </div>
 
-  <div class="card fade-up delay-1">
-    <h3>iRoid Solutions</h3>
-    <span>Feb 2024 — July 2024</span>
-    <ul>
-      <li>Built video-based social app (Reels-style)</li>
-      <li>Integrated Firebase Auth, Push, Analytics</li>
-      <li>Developed Doctor Appointment Booking app</li>
-      <li>Improved performance & reduced crashes</li>
-    </ul>
-  </div>
+      <div class="card reveal delay-1 spotlight-card">
+        <div class="card-content">
+          <h3>iRoid Solutions</h3>
+          <span class="date-badge">Feb 2024 — July 2024</span>
+          <ul>
+            <li>Built video-based social app (Reels-style)</li>
+            <li>Integrated Firebase Auth, Push, Analytics</li>
+            <li>Developed Doctor Appointment Booking app</li>
+            <li>Optimized performance & reduced crashes</li>
+          </ul>
+        </div>
+      </div>
 
-  <div class="card fade-up delay-2">
-    <h3>Work Do Solutions Pvt. Ltd.</h3>
-    <span>Aug 2022 — Feb 2024</span>
-    <ul>
-      <li>Built full iOS app modules end-to-end</li>
-      <li>REST API integration (Alamofire, URLSession)</li>
-      <li>Implemented offline mode & push notifications</li>
-    </ul>
-  </div>
+      <div class="card reveal delay-2 spotlight-card">
+        <div class="card-content">
+          <h3>Work Do Solutions</h3>
+          <span class="date-badge">Aug 2022 — Feb 2024</span>
+          <ul>
+            <li>Built full iOS app modules end-to-end</li>
+            <li>REST API integration (Alamofire, URLSession)</li>
+            <li>Implemented offline mode & push notifications</li>
+          </ul>
+        </div>
+      </div>
 
-</section>
+    </div>
+  </section>
 
-<section id="skills" class="section fade-in">
-  <h2>Technical Skills</h2>
-  <div class="skills-grid">
-    <span>Swift</span>
-    <span>SwiftUI</span>
-    <span>UIKit</span>
-    <span>MVVM</span>
-    <span>Firebase</span>
-    <span>Core Data</span>
-    <span>Realm</span>
-    <span>Combine</span>
-    <span>CI/CD</span>
-    <span>Fastlane</span>
-    <span>XCTest</span>
-  </div>
-</section>
+  <section id="skills" class="section reveal">
+    <h2 class="section-title">Technical Arsenal</h2>
+    <div class="skills-grid">
+      <span class="skill-tag">Swift</span>
+      <span class="skill-tag">SwiftUI</span>
+      <span class="skill-tag">UIKit</span>
+      <span class="skill-tag">MVVM</span>
+      <span class="skill-tag">Firebase</span>
+      <span class="skill-tag">Core Data</span>
+      <span class="skill-tag">Realm</span>
+      <span class="skill-tag">Combine</span>
+      <span class="skill-tag">CI/CD</span>
+      <span class="skill-tag">Fastlane</span>
+      <span class="skill-tag">XCTest</span>
+    </div>
+  </section>
 
-<section id="contact" class="section fade-in">
-  <h2>Contact</h2>
-  <p>Email: dishajogi22@gmail.com</p>
-  <p>Phone: +91 9574665449</p>
-  <p>Ahmedabad, India</p>
-</section>
+  <section id="contact" class="section reveal">
+    <div class="contact-box spotlight-card">
+      <div class="card-content">
+        <h2>Let's Build Something</h2>
+        <p>Email: <a href="mailto:dishajogi22@gmail.com" class="highlight-link">dishajogi22@gmail.com</a></p>
+        <p>Phone: +91 9574665449</p>
+        <p>Ahmedabad, India</p>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  © 2026 Disha Jogi — iOS Developer
-</footer>
+  <footer>
+    <p>© 2026 Disha Jogi — Forged for iOS</p>
+  </footer>
 
+  <script>
+    // 1. Scroll Reveal Animation
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 2. Initial Load Animation
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hidden-load').forEach(el => el.classList.add('active'));
+    });
+
+    // 3. Premium Mouse Spotlight Effect on Cards
+    const cards = document.querySelectorAll('.spotlight-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  </script>
 </body>
 </html>
