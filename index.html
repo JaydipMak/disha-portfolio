@@ -3,333 +3,321 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Disha Jogi | Premium iOS Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <title>Disha Jogi | Premium iOS Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* Apple-Inspired Premium Dark Theme */
+    /* CSS Variables & Reset */
     :root {
-      --bg-dark: #000000;
-      --card-bg: #111111;
-      --card-border: #222222;
-      --text-main: #F5F5F7;
-      --text-muted: #86868B;
-      --accent: #2997FF;
+      --bg: #030305;
+      --text: #ffffff;
+      --text-muted: #888893;
+      --accent: #0A84FF;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glow: 0 0 20px rgba(10, 132, 255, 0.3);
     }
 
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-    }
-
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Typography */
-    h1, h2, h3 { letter-spacing: -0.02em; }
-    h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
-    h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Manrope', sans-serif; cursor: none; }
     
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 8rem 0; }
+    body { background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+    html { scroll-behavior: smooth; }
+
+    /* Custom Cursor */
+    .cursor-dot, .cursor-outline {
+      position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+      border-radius: 50%; z-index: 9999; pointer-events: none;
+    }
+    .cursor-dot { width: 8px; height: 8px; background: var(--accent); }
+    .cursor-outline {
+      width: 40px; height: 40px; border: 2px solid rgba(10, 132, 255, 0.5);
+      transition: width 0.2s, height 0.2s, background-color 0.2s;
+    }
+
+    /* Fluid Background Animations */
+    .blob {
+      position: fixed; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.5;
+      animation: float 20s infinite alternate ease-in-out;
+    }
+    .blob-1 { width: 40vw; height: 40vw; background: rgba(10, 132, 255, 0.3); top: -10%; left: -10%; }
+    .blob-2 { width: 35vw; height: 35vw; background: rgba(138, 43, 226, 0.2); bottom: -10%; right: -10%; animation-delay: -5s; }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(10%, 15%) scale(1.2); }
+    }
+
+    /* Glass Navigation */
+    nav {
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(10, 10, 15, 0.7); backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border); border-radius: 50px;
+      padding: 15px 40px; display: flex; gap: 30px; z-index: 1000;
+      width: 90%; max-width: 600px; justify-content: center;
+    }
+    nav a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
+    nav a:hover { color: var(--accent); }
+
+    /* Layout Containers */
+    .container { max-width: 1200px; margin: 0 auto; padding: 120px 20px 60px; }
+    .section-title { font-size: 3rem; font-weight: 800; text-align: center; margin-bottom: 3rem; background: linear-gradient(to right, #fff, #555); -webkit-background-clip: text; color: transparent; }
 
     /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-    }
-
-    .hero-subtitle {
-      font-size: 1.5rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
-
-    /* BENTO GRID (For Projects) */
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      grid-auto-rows: 400px;
-    }
-
-    .bento-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 32px;
-      overflow: hidden;
-      position: relative;
-      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .bento-card:hover {
-      transform: scale(1.02);
-      border-color: #444;
-    }
-
-    .bento-card.large { grid-column: span 2; }
-    @media (max-width: 768px) { .bento-card.large { grid-column: span 1; } }
-
-    /* Project Images inside Bento */
-    .bento-img {
-      width: 100%;
-      height: 60%;
-      object-fit: cover;
-      border-bottom: 1px solid var(--card-border);
-    }
+    .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+    .hero p { font-size: clamp(1rem, 2vw, 1.5rem); color: var(--text-muted); max-width: 700px; margin-bottom: 40px; }
     
-    .bento-card.large .bento-img { height: 70%; }
-
-    .bento-content {
-      padding: 24px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .btn {
+      padding: 18px 45px; background: var(--accent); color: #fff; text-decoration: none;
+      border-radius: 30px; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px;
+      box-shadow: var(--glow); transition: all 0.3s ease; display: inline-block;
     }
+    .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(10, 132, 255, 0.4); }
 
-    .app-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 4px; }
-    .app-desc { color: var(--text-muted); font-size: 1rem; }
-    .app-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      margin-top: 12px;
+    /* Infinite Skills Marquee */
+    .marquee-container { width: 100vw; overflow: hidden; padding: 20px 0; background: var(--glass-bg); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); margin: 50px 0; }
+    .marquee { display: flex; width: max-content; animation: scrollMarquee 20s linear infinite; }
+    .marquee span { font-size: 1.5rem; font-weight: 800; color: var(--text-muted); margin: 0 40px; text-transform: uppercase; letter-spacing: 2px; }
+    @keyframes scrollMarquee { to { transform: translateX(-50%); } }
+
+    /* The Glass Card Standard */
+    .glass-card {
+      background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border);
+      border-radius: 24px; padding: 30px; transition: transform 0.4s, border-color 0.4s; position: relative; overflow: hidden;
     }
-    .app-link:hover { text-decoration: underline; }
-
-    /* Tags for App Types */
-    .tag {
-      position: absolute;
-      top: 20px; right: 20px;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.1);
+    .glass-card:hover { transform: translateY(-10px); border-color: rgba(10, 132, 255, 0.4); }
+    .glass-card::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+      transform: skewX(-20deg); transition: 0.5s;
     }
+    .glass-card:hover::before { left: 150%; }
 
-    /* Experience with Images */
-    .exp-container { display: flex; flex-direction: column; gap: 40px; }
-    
-    .exp-card {
-      display: flex;
-      gap: 30px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 32px;
-      padding: 30px;
-      align-items: center;
+    /* Timeline (Experience & Education) */
+    .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+    .timeline::before { content: ''; position: absolute; left: 20px; top: 0; width: 2px; height: 100%; background: var(--glass-border); }
+    .timeline-item { position: relative; padding-left: 60px; margin-bottom: 40px; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: 14px; top: 8px; width: 14px; height: 14px;
+      border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); box-shadow: var(--glow);
     }
+    .timeline-date { color: var(--accent); font-weight: 800; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 10px; display: block; }
 
-    @media (max-width: 768px) { .exp-card { flex-direction: column; } }
+    /* Project Grid */
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .project-img-box { width: 100%; height: 200px; border-radius: 12px; background: #1a1a1a; margin-bottom: 20px; overflow: hidden; position: relative; }
+    .project-img-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity 0.4s; }
+    .glass-card:hover .project-img-box img { opacity: 1; transform: scale(1.05); }
+    .app-category { position: absolute; top: 10px; right: 10px; background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; }
+    .project-links a { color: var(--accent); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 15px; margin-right: 15px; }
+    .project-links a:hover { text-decoration: underline; }
 
-    .exp-img-wrapper {
-      flex-shrink: 0;
-      width: 300px;
-      height: 200px;
-      border-radius: 20px;
-      overflow: hidden;
+    /* Scroll Reveal Animation Classes */
+    .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { width: 95%; padding: 15px 20px; gap: 15px; }
+      nav a { font-size: 0.8rem; }
+      .timeline::before { left: 15px; }
+      .timeline-item { padding-left: 45px; }
+      .timeline-item::before { left: 9px; }
+      * { cursor: auto; } /* Disable custom cursor on mobile */
+      .cursor-dot, .cursor-outline { display: none; }
     }
-
-    .exp-img-wrapper img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .exp-card:hover .exp-img-wrapper img { transform: scale(1.05); }
-
-    .exp-details h3 { font-size: 2rem; margin-bottom: 8px; }
-    .exp-details span { color: var(--accent); font-weight: 600; display: block; margin-bottom: 16px; }
-    .exp-details p { color: var(--text-muted); font-size: 1.1rem; }
-
-    /* High-End Footer */
-    .premium-footer {
-      background: #050505;
-      border-top: 1px solid var(--card-border);
-      padding: 100px 24px 50px;
-      text-align: center;
-    }
-
-    .footer-cta {
-      font-size: 4rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #fff 0%, #555 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 30px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 60px;
-    }
-
-    .footer-links a {
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    .footer-links a:hover { color: var(--accent); }
-
-    .copyright { color: var(--text-muted); font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Disha Jogi.</h1>
-      <p class="hero-subtitle">Engineering premium iOS experiences. From App Store hits to robust CodeCanyon architectures.</p>
+  <div class="cursor-dot" data-cursor-dot></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+  </nav>
+
+  <section id="home" class="hero container reveal">
+    <h1>Disha Jogi</h1>
+    <p>Premium iOS Developer engineering high-performance architectures. From massive E-Commerce systems to top-charting App Store hits.</p>
+    <a href="#projects" class="btn">View Production Apps</a>
+  </section>
+
+  <div class="marquee-container reveal">
+    <div class="marquee">
+      <span>SwiftUI</span><span>UIKit</span><span>MVVM</span><span>Firebase</span><span>CI/CD</span><span>Core Data</span><span>Combine</span>
+      <span>SwiftUI</span><span>UIKit</span><span>MVVM</span><span>Firebase</span><span>CI/CD</span><span>Core Data</span><span>Combine</span>
+    </div>
+  </div>
+
+  <section id="experience" class="container">
+    <h2 class="section-title reveal">Career Timeline</h2>
+    <div class="timeline">
+      
+      <div class="timeline-item reveal">
+        <div class="glass-card">
+          <span class="timeline-date">JUL 2024 — MAR 2025</span>
+          <h3>iOS Developer @ Wald Solutions</h3>
+          <p style="color: var(--text-muted); margin-top: 10px;">Lead developer for Gujarati Kids learning apps. Engineered responsive layouts for iPhone & iPad, transitioning the team to clean MVVM architecture and automated CI/CD pipelines via GitHub Actions.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="glass-card">
+          <span class="timeline-date">FEB 2024 — JUL 2024</span>
+          <h3>iOS Developer @ iRoid Solutions</h3>
+          <p style="color: var(--text-muted); margin-top: 10px;">Architected a heavy video-content app (Reels-style) focusing on seamless scrolling and memory optimization. Integrated Firebase services and developed a complete Doctor Appointment Booking application.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="glass-card">
+          <span class="timeline-date">AUG 2022 — FEB 2024</span>
+          <h3>iOS Developer @ Work Do Solutions Pvt. Ltd.</h3>
+          <p style="color: var(--text-muted); margin-top: 10px;">Started as an intern and scaled to full-time. Handled complete end-to-end development of multiple modules, from raw wireframes in UIKit to fully published App Store releases.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <section class="section container">
-    <h2>Featured Projects</h2>
+  <section id="projects" class="container">
+    <h2 class="section-title reveal">Deployed Architecture</h2>
     
-    <div class="bento-grid">
+    <div class="project-grid">
       
-      <div class="bento-card large">
-        <span class="tag" style="color: #FF2D55;">App Store</span>
-        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200&auto=format&fit=crop" alt="Goomooz UI" class="bento-img">
-        <div class="bento-content">
-          <div>
-            <div class="app-title">Goomooz</div>
-            <div class="app-desc">A highly interactive social media platform inspired by Instagram. Features smooth media handling, infinite scrolling, and real-time interactions.</div>
-          </div>
-          <a href="https://apps.apple.com/in/app/goomooz/id6470623407" target="_blank" class="app-link">View on App Store →</a>
+      <div class="glass-card reveal">
+        <div class="project-img-box">
+          <span class="app-category">Social Media</span>
+          <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" alt="Goomooz">
+        </div>
+        <h3>Goomooz</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">A highly interactive social media platform inspired by Instagram. Features smooth media handling and real-time interactions.</p>
+        <div class="project-links"><a href="https://apps.apple.com/in/app/goomooz/id6470623407" target="_blank">App Store →</a></div>
+      </div>
+
+      <div class="glass-card reveal">
+        <div class="project-img-box">
+          <span class="app-category" style="background: #FF9500;">Education Suite</span>
+          <img src="https://images.unsplash.com/photo-1587691592099-24045742c181?q=80&w=800&auto=format&fit=crop" alt="Learning Apps">
+        </div>
+        <h3>Kids Learning Suite</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Interactive educational ecosystem built for children, successfully localized and published in English, Gujarati, and Hindi.</p>
+        <div class="project-links">
+          <a href="https://apps.apple.com/in/app/english-kids-learning-app/id6741418279" target="_blank">English →</a>
+          <a href="https://apps.apple.com/in/app/gujarati-kids-learning-app/id6739483188" target="_blank">Gujarati →</a>
+          <a href="https://apps.apple.com/in/app/hindi-kids-learning-app/id6741913115" target="_blank">Hindi →</a>
         </div>
       </div>
 
-      <div class="bento-card">
-        <span class="tag" style="color: #FF9500;">App Suite</span>
-        <img src="https://images.unsplash.com/photo-1587691592099-24045742c181?q=80&w=800&auto=format&fit=crop" alt="Kids Learning App" class="bento-img">
-        <div class="bento-content">
-          <div>
-            <div class="app-title">Kids Learning Suite</div>
-            <div class="app-desc">Interactive educational apps built for children, localized in English, Gujarati, and Hindi.</div>
-          </div>
-          <a href="https://apps.apple.com/in/app/english-kids-learning-app/id6741418279" target="_blank" class="app-link">Download Apps →</a>
+      <div class="glass-card reveal">
+        <div class="project-img-box">
+          <span class="app-category" style="background: #34C759;">Security</span>
+          <img src="https://images.unsplash.com/photo-1614064641913-6b7140414c71?q=80&w=800&auto=format&fit=crop" alt="SecureVault">
+        </div>
+        <h3>SecureVault</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">A robust, encrypted password management utility built natively for iOS with secure offline storage.</p>
+        <div class="project-links"><a href="https://apps.apple.com/in/app/password-manager-securevault/id6741886430" target="_blank">App Store →</a></div>
+      </div>
+
+      <div class="glass-card reveal">
+        <div class="project-img-box">
+          <span class="app-category" style="background: #AF52DE;">Freelance</span>
+          <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800&auto=format&fit=crop" alt="Rydex">
+        </div>
+        <h3>Rydex & Zenzi</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Freelance projects including Zenzi and Rydex (a complex dual-app system for Users and Drivers with live mapping).</p>
+        <div class="project-links">
+          <a href="https://apps.apple.com/in/app/rydex-client/id1184832545" target="_blank">Rydex User →</a>
+          <a href="https://apps.apple.com/in/app/rydex-driver/id1183696602" target="_blank">Rydex Driver →</a>
+          <a href="https://apps.apple.com/in/app/zenzi/id6741046217" target="_blank">Zenzi →</a>
         </div>
       </div>
 
-      <div class="bento-card">
-        <span class="tag" style="color: #34C759;">Security</span>
-        <img src="https://images.unsplash.com/photo-1614064641913-6b7140414c71?q=80&w=800&auto=format&fit=crop" alt="Password Manager" class="bento-img">
-        <div class="bento-content">
-          <div>
-            <div class="app-title">SecureVault</div>
-            <div class="app-desc">A robust, encrypted password management utility built natively for iOS.</div>
-          </div>
-          <a href="https://apps.apple.com/in/app/password-manager-securevault/id6741886430" target="_blank" class="app-link">View on App Store →</a>
+      <div class="glass-card reveal" style="grid-column: 1 / -1;">
+        <div class="project-img-box" style="height: 300px;">
+          <span class="app-category" style="background: #FF2D55;">Product Base (CodeCanyon)</span>
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Enterprise Solutions">
         </div>
-      </div>
-
-      <div class="bento-card large">
-        <span class="tag" style="color: #AF52DE;">Freelance</span>
-        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1200&auto=format&fit=crop" alt="Rydex App" class="bento-img">
-        <div class="bento-content">
-          <div>
-            <div class="app-title">Rydex & Zenzi</div>
-            <div class="app-desc">Freelance projects including <strong>Rydex</strong> (a complex dual-app system for Users and Drivers with real-time map tracking) and <strong>Zenzi</strong>.</div>
-          </div>
-          <a href="https://apps.apple.com/in/app/rydex-client/id1184832545" target="_blank" class="app-link">View Rydex →</a>
-        </div>
-      </div>
-
-      <div class="bento-card large">
-        <span class="tag" style="color: #00C7BE;">Product Base (CodeCanyon)</span>
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="CodeCanyon Apps" class="bento-img">
-        <div class="bento-content">
-          <div>
-            <div class="app-title">Commercial App Architectures</div>
-            <div class="app-desc">
-              Developed highly scalable, white-label products sold on CodeCanyon: <br><br>
-              • <strong>E-Commerce Suite:</strong> Amazon/Flipkart-style apps for Baby Care, Clothing, and Jewellery.<br>
-              • <strong>AI Go:</strong> ChatGPT-style API-driven assistant for code and news.<br>
-              • <strong>Ticket GO:</strong> Comprehensive Train/Bus/Flight booking engine.<br>
-              • <strong>Dentist App:</strong> Real-time appointment booking and map-based doctor tracking.
-            </div>
-          </div>
-        </div>
+        <h3>Commercial App Architectures</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; margin-top: 10px; line-height: 1.8;">
+          Developed highly scalable, white-label products sold globally on CodeCanyon:<br>
+          • <strong>E-Commerce Suite:</strong> Amazon/Flipkart-style buying/delivery apps tailored for Baby Care, Men/Women Clothing, and Jewellery themes.<br>
+          • <strong>AI Go:</strong> A ChatGPT-style API-driven assistant delivering live code structure and news generation.<br>
+          • <strong>Ticket GO:</strong> A comprehensive multimodal booking engine for trains, buses, and flights.<br>
+          • <strong>Dentist App:</strong> Real-time appointment scheduling and map-based nearest-doctor tracking.
+        </p>
       </div>
 
     </div>
   </section>
 
-  <section class="section container">
-    <h2>Professional Experience</h2>
-    
-    <div class="exp-container">
-      
-      <div class="exp-card">
-        <div class="exp-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Wald Solutions Office">
-        </div>
-        <div class="exp-details">
-          <h3>Wald Solutions</h3>
-          <span>July 2024 — March 2025 | iOS Developer</span>
-          <p>Lead developer for Gujarati Kids learning applications. Engineered responsive layouts for iPhone & iPad, transitioning the team to clean MVVM architecture and automated CI/CD pipelines via GitHub Actions.</p>
-        </div>
-      </div>
-
-      <div class="exp-card">
-        <div class="exp-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="iRoid Team">
-        </div>
-        <div class="exp-details">
-          <h3>iRoid Solutions</h3>
-          <span>Feb 2024 — July 2024 | iOS Developer</span>
-          <p>Architected a heavy video-content app (Reels-style) focusing on seamless scrolling and memory optimization. Integrated Firebase services and developed a complete Doctor Appointment Booking application.</p>
-        </div>
-      </div>
-
-      <div class="exp-card">
-        <div class="exp-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop" alt="Work Do Solutions Setup">
-        </div>
-        <div class="exp-details">
-          <h3>Work Do Solutions Pvt. Ltd.</h3>
-          <span>Aug 2022 — Feb 2024 | iOS Developer</span>
-          <p>Started as an intern and scaled to full-time. Handled complete end-to-end development of multiple modules, from raw wireframes in UIKit to fully published App Store releases.</p>
-        </div>
-      </div>
-
+  <section id="education" class="container">
+    <h2 class="section-title reveal">Academic Background</h2>
+    <div class="glass-card reveal" style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <h3 style="font-size: 1.8rem; margin-bottom: 5px;">Bachelor in Information Technology</h3>
+      <p style="color: var(--accent); font-weight: 800; letter-spacing: 1px; margin-bottom: 20px;">2020 — 2023</p>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Ravindranath Tagore University</p>
     </div>
   </section>
 
-  <footer class="premium-footer">
-    <div class="container">
-      <div class="footer-cta">Let's build something extraordinary.</div>
-      
-      <div class="footer-links">
-        <a href="mailto:dishajogi22@gmail.com">dishajogi22@gmail.com</a>
-        <a href="tel:+919574665449">+91 9574665449</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-      </div>
-
-      <p class="copyright">© 2026 Disha Jogi. Designed & Engineered in Ahmedabad.</p>
+  <footer class="container reveal" style="text-align: center; padding-top: 100px; border-top: 1px solid var(--glass-border); margin-top: 50px;">
+    <h2 style="font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 20px;">Let's Build the Future.</h2>
+    <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; flex-wrap: wrap;">
+      <a href="mailto:dishajogi22@gmail.com" class="btn" style="background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text); box-shadow: none;">dishajogi22@gmail.com</a>
+      <a href="tel:+919574665449" class="btn" style="background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text); box-shadow: none;">+91 9574665449</a>
     </div>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">© 2026 Disha Jogi. Designed & Engineered in Ahmedabad.</p>
   </footer>
 
+  <script>
+    // Scroll Reveal Logic
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // Custom Cursor Logic
+    const cursorDot = document.querySelector('[data-cursor-dot]');
+    const cursorOutline = document.querySelector('[data-cursor-outline]');
+
+    window.addEventListener('mousemove', function(e) {
+      const posX = e.clientX;
+      const posY = e.clientY;
+
+      cursorDot.style.left = `${posX}px`;
+      cursorDot.style.top = `${posY}px`;
+      
+      // Add slight delay to outline for smooth fluid feel
+      cursorOutline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+      }, { duration: 500, fill: "forwards" });
+    });
+
+    // Hover effect for cursor on links/buttons
+    document.querySelectorAll('a, .btn, .glass-card').forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        cursorOutline.style.width = '60px';
+        cursorOutline.style.height = '60px';
+        cursorOutline.style.backgroundColor = 'rgba(10, 132, 255, 0.1)';
+      });
+      link.addEventListener('mouseleave', () => {
+        cursorOutline.style.width = '40px';
+        cursorOutline.style.height = '40px';
+        cursorOutline.style.backgroundColor = 'transparent';
+      });
+    });
+  </script>
 </body>
 </html>
