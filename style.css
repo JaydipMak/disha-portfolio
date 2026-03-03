@@ -2,6 +2,71 @@
    PREMIUM IOS DEVELOPER THEME
    ========================================= */
 
+/* Hero Section */
+.hero {
+  min-height: 90vh; /* Changed from fixed height for better responsiveness */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  text-align: left;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.hero-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 30px;
+  /* A subtle glowing effect for a premium feel */
+  filter: drop-shadow(0 10px 30px rgba(10, 132, 255, 0.3));
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 968px) {
+  .hero {
+    flex-direction: column-reverse; /* Stack image on top of text on mobile */
+    text-align: center;
+    padding-top: 60px;
+    gap: 40px;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-image {
+    max-width: 80%; /* Slightly smaller image on mobile */
+  }
+}
 /* CSS Variables & Reset */
 :root {
   --bg: #030305;
@@ -139,70 +204,4 @@ nav a:hover { color: var(--accent); }
   /* Disable custom cursor on mobile to preserve touch controls */
   * { cursor: auto; }
   .cursor-dot, .cursor-outline { display: none; }
-}
-
-/* Hero Section */
-.hero {
-  min-height: 90vh; /* Changed from fixed height for better responsiveness */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-}
-
-.hero-content {
-  flex: 1;
-  max-width: 600px;
-  text-align: left;
-}
-
-.hero h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  color: var(--text-muted);
-  margin-bottom: 40px;
-}
-
-.hero-image-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.hero-image {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  border-radius: 30px;
-  /* A subtle glowing effect for a premium feel */
-  filter: drop-shadow(0 10px 30px rgba(10, 132, 255, 0.3));
-  position: relative;
-  z-index: 2;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 968px) {
-  .hero {
-    flex-direction: column-reverse; /* Stack image on top of text on mobile */
-    text-align: center;
-    padding-top: 60px;
-    gap: 40px;
-  }
-
-  .hero-content {
-    text-align: center;
-    max-width: 100%;
-  }
-
-  .hero-image {
-    max-width: 80%; /* Slightly smaller image on mobile */
-  }
 }
