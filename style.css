@@ -210,44 +210,53 @@ nav a:hover { color: var(--accent); }
   flex-direction: column;
   gap: 40px;
 }
+
+/* HERO BUTTON LAYOUT */
+
 .hero-buttons{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  align-items:center;
+display:flex;
+flex-direction:column;
+gap:20px;
+align-items:center;
+margin-top:25px;
 }
 
 /* Primary Button */
+
 .btn{
-  padding:18px 45px;
-  background:var(--accent);
-  color:#fff;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:800;
-  letter-spacing:1px;
-  box-shadow:var(--glow);
-  transition:0.3s;
+padding:18px 45px;
+background:var(--accent);
+color:#fff;
+border-radius:30px;
+text-decoration:none;
+font-weight:800;
+font-size:1.1rem;
+letter-spacing:1px;
+box-shadow:var(--glow);
+transition:0.3s;
+display:inline-block;
 }
 
 .btn:hover{
-  transform:translateY(-5px);
+transform:translateY(-5px);
+box-shadow:0 15px 30px rgba(10,132,255,0.4);
 }
 
 /* Resume Border Button */
+
 .btn-border{
-  padding:16px 40px;
-  border:2px solid var(--accent);
-  color:var(--accent);
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:700;
-  background:transparent;
-  transition:0.3s;
+padding:14px 35px;
+border:2px solid var(--accent);
+color:var(--accent);
+border-radius:30px;
+text-decoration:none;
+font-weight:700;
+background:transparent;
+transition:0.3s;
 }
 
 .btn-border:hover{
-  background:var(--accent);
-  color:white;
-  box-shadow:var(--glow);
+background:var(--accent);
+color:white;
+box-shadow:var(--glow);
 }
