@@ -210,3 +210,21 @@ nav a:hover { color: var(--accent); }
   flex-direction: column;
   gap: 40px;
 }
+.hero-buttons{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn-outline{
+  background: transparent;
+  border:2px solid var(--accent);
+  color:var(--accent);
+  box-shadow:none;
+}
+
+.btn-outline:hover{
+  background:var(--accent);
+  color:white;
+  box-shadow:var(--glow);
+}
