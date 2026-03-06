@@ -206,5 +206,7 @@ nav a:hover { color: var(--accent); }
   .cursor-dot, .cursor-outline { display: none; }
 }
 #education{
-    padding: 20px 20px 60px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
