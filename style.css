@@ -212,23 +212,42 @@ nav a:hover { color: var(--accent); }
 }
 .hero-buttons{
   display:flex;
+  flex-direction:column;
   gap:20px;
-  justify-content:center;
   align-items:center;
-  flex-wrap:wrap;
 }
 
-/* Mobile layout */
-@media (max-width:768px){
+/* Primary Button */
+.btn{
+  padding:18px 45px;
+  background:var(--accent);
+  color:#fff;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:1px;
+  box-shadow:var(--glow);
+  transition:0.3s;
+}
 
-  .hero-buttons{
-    flex-direction:column;
-    width:100%;
-  }
+.btn:hover{
+  transform:translateY(-5px);
+}
 
-  .hero-buttons .btn{
-    width:100%;
-    text-align:center;
-  }
+/* Resume Border Button */
+.btn-border{
+  padding:16px 40px;
+  border:2px solid var(--accent);
+  color:var(--accent);
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:700;
+  background:transparent;
+  transition:0.3s;
+}
 
+.btn-border:hover{
+  background:var(--accent);
+  color:white;
+  box-shadow:var(--glow);
 }
