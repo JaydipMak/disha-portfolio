@@ -2,133 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Disha Jogi | Portfolio</title>
-                
-                <link rel="icon" type="image/png" href="/apple-logo.png">
-                    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
-                        <style>
-                            /* CSS Variables & Reset */
-                            :root {
-                                --bg: #030305;
-                                --text: #ffffff;
-                                --text-muted: #888893;
-                                --accent: #0A84FF;
-                                --glass-bg: rgba(255, 255, 255, 0.03);
-                                --glass-border: rgba(255, 255, 255, 0.08);
-                                --glow: 0 0 20px rgba(10, 132, 255, 0.3);
-                            }
-                            
-                            * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Manrope', sans-serif; cursor: none; }
-                            
-                            body { background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
-                            html { scroll-behavior: smooth; }
-                            
-                            /* Custom Cursor */
-                            .cursor-dot, .cursor-outline {
-                                position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
-                                border-radius: 50%; z-index: 9999; pointer-events: none;
-                            }
-                            .cursor-dot { width: 8px; height: 8px; background: var(--accent); }
-                            .cursor-outline {
-                                width: 40px; height: 40px; border: 2px solid rgba(10, 132, 255, 0.5);
-                                transition: width 0.2s, height 0.2s, background-color 0.2s;
-                            }
-                            
-                            /* Fluid Background Animations */
-                            .blob {
-                                position: fixed; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.5;
-                                animation: float 20s infinite alternate ease-in-out;
-                            }
-                            .blob-1 { width: 40vw; height: 40vw; background: rgba(10, 132, 255, 0.3); top: -10%; left: -10%; }
-                            .blob-2 { width: 35vw; height: 35vw; background: rgba(138, 43, 226, 0.2); bottom: -10%; right: -10%; animation-delay: -5s; }
-                            
-                            @keyframes float {
-                                0% { transform: translate(0, 0) scale(1); }
-                                100% { transform: translate(10%, 15%) scale(1.2); }
-                            }
-                            
-                            /* Glass Navigation */
-                            nav {
-                                position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-                                background: rgba(10, 10, 15, 0.7); backdrop-filter: blur(20px);
-                                border: 1px solid var(--glass-border); border-radius: 50px;
-                                padding: 15px 40px; display: flex; gap: 30px; z-index: 1000;
-                                width: 90%; max-width: 600px; justify-content: center;
-                            }
-                            nav a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
-                            nav a:hover { color: var(--accent); }
-                            
-                            /* Layout Containers */
-                            .container { max-width: 1200px; margin: 0 auto; padding: 120px 20px 60px; }
-                            .section-title { font-size: 3rem; font-weight: 800; text-align: center; margin-bottom: 3rem; background: linear-gradient(to right, #fff, #555); -webkit-background-clip: text; color: transparent; }
-                            
-                            /* Hero Section */
-                            .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-                            .hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-                            .hero p { font-size: clamp(1rem, 2vw, 1.5rem); color: var(--text-muted); max-width: 700px; margin-bottom: 40px; }
-                            
-                            .btn {
-                                padding: 18px 45px; background: var(--accent); color: #fff; text-decoration: none;
-                                border-radius: 30px; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px;
-                                box-shadow: var(--glow); transition: all 0.3s ease; display: inline-block;
-                            }
-                            .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(10, 132, 255, 0.4); }
-                            
-                            /* Infinite Skills Marquee */
-                            .marquee-container { width: 100vw; overflow: hidden; padding: 20px 0; background: var(--glass-bg); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); margin: 50px 0; }
-                            .marquee { display: flex; width: max-content; animation: scrollMarquee 20s linear infinite; }
-                            .marquee span { font-size: 1.5rem; font-weight: 800; color: var(--text-muted); margin: 0 40px; text-transform: uppercase; letter-spacing: 2px; }
-                            @keyframes scrollMarquee { to { transform: translateX(-50%); } }
-                            
-                            /* The Glass Card Standard */
-                            .glass-card {
-                                background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border);
-                                border-radius: 24px; padding: 30px; transition: transform 0.4s, border-color 0.4s; position: relative; overflow: hidden;
-                            }
-                            .glass-card:hover { transform: translateY(-10px); border-color: rgba(10, 132, 255, 0.4); }
-                            .glass-card::before {
-                                content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-                                background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
-                                transform: skewX(-20deg); transition: 0.5s;
-                            }
-                            .glass-card:hover::before { left: 150%; }
-                            
-                            /* Timeline (Experience & Education) */
-                            .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-                            .timeline::before { content: ''; position: absolute; left: 20px; top: 0; width: 2px; height: 100%; background: var(--glass-border); }
-                            .timeline-item { position: relative; padding-left: 60px; margin-bottom: 40px; }
-                            .timeline-item::before {
-                                content: ''; position: absolute; left: 14px; top: 8px; width: 14px; height: 14px;
-                                border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); box-shadow: var(--glow);
-                            }
-                            .timeline-date { color: var(--accent); font-weight: 800; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 10px; display: block; }
-                            
-                            /* Project Grid */
-                            .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-                            .project-img-box { width: 100%; height: 200px; border-radius: 12px; background: #1a1a1a; margin-bottom: 20px; overflow: hidden; position: relative; }
-                            .project-img-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity 0.4s; }
-                            .glass-card:hover .project-img-box img { opacity: 1; transform: scale(1.05); }
-                            .app-category { position: absolute; top: 10px; right: 10px; background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; }
-                            .project-links a { color: var(--accent); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 15px; margin-right: 15px; }
-                            .project-links a:hover { text-decoration: underline; }
-                            
-                            /* Scroll Reveal Animation Classes */
-                            .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-                            .reveal.active { opacity: 1; transform: translateY(0); }
-                            
-                            /* Responsive */
-                            @media (max-width: 768px) {
-                                nav { width: 95%; padding: 15px 20px; gap: 15px; }
-                                nav a { font-size: 0.8rem; }
-                                .timeline::before { left: 15px; }
-                                .timeline-item { padding-left: 45px; }
-                                .timeline-item::before { left: 9px; }
-                                * { cursor: auto; } /* Disable custom cursor on mobile */
-                                .cursor-dot, .cursor-outline { display: none; }
-                            }
-                        </style>
-                </head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Disha Jogi | Portfolio</title>
+        <link rel="icon" type="image/png" href="apple-logo.png">
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
     <body>
         
         <div class="cursor-dot" data-cursor-dot></div>
@@ -155,7 +34,7 @@
                     <a href="#projects" class="btn">
                         View Production Apps
                     </a>
-                    <a href="/Disha_Jogi_Resume.pdf" class="btn-border" download>
+                    <a href="Disha_Jogi_Resume.pdf" class="btn-border" download>
                         Download Resume
                     </a>
                 </div>
