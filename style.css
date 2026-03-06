@@ -213,18 +213,22 @@ nav a:hover { color: var(--accent); }
 .hero-buttons{
   display:flex;
   gap:20px;
+  justify-content:center;
+  align-items:center;
   flex-wrap:wrap;
 }
 
-.btn-outline{
-  background: transparent;
-  border:2px solid var(--accent);
-  color:var(--accent);
-  box-shadow:none;
-}
+/* Mobile layout */
+@media (max-width:768px){
 
-.btn-outline:hover{
-  background:var(--accent);
-  color:white;
-  box-shadow:var(--glow);
+  .hero-buttons{
+    flex-direction:column;
+    width:100%;
+  }
+
+  .hero-buttons .btn{
+    width:100%;
+    text-align:center;
+  }
+
 }
