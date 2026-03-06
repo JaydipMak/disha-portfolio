@@ -2,71 +2,6 @@
    PREMIUM IOS DEVELOPER THEME
    ========================================= */
 
-/* Hero Section */
-.hero {
-  min-height: 90vh; /* Changed from fixed height for better responsiveness */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-}
-
-.hero-content {
-  flex: 1;
-  max-width: 600px;
-  text-align: left;
-}
-
-.hero h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  color: var(--text-muted);
-  margin-bottom: 40px;
-}
-
-.hero-image-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.hero-image {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  border-radius: 30px;
-  /* A subtle glowing effect for a premium feel */
-  filter: drop-shadow(0 10px 30px rgba(10, 132, 255, 0.3));
-  position: relative;
-  z-index: 2;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 968px) {
-  .hero {
-    flex-direction: column-reverse; /* Stack image on top of text on mobile */
-    text-align: center;
-    padding-top: 60px;
-    gap: 40px;
-  }
-
-  .hero-content {
-    text-align: center;
-    max-width: 100%;
-  }
-
-  .hero-image {
-    max-width: 80%; /* Slightly smaller image on mobile */
-  }
-}
 /* CSS Variables & Reset */
 :root {
   --bg: #030305;
@@ -139,10 +74,37 @@ nav a:hover { color: var(--accent); }
 .container { max-width: 1200px; margin: 0 auto; padding: 120px 20px 60px; }
 .section-title { font-size: 3rem; font-weight: 800; text-align: center; margin-bottom: 3rem; background: linear-gradient(to right, #fff, #555); -webkit-background-clip: text; color: transparent; }
 
-/* Hero Section */
-.hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+/* Hero Section (FIXED CENTERING) */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 800px;
+    text-align: center; /* Forces text to center */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
 .hero p { font-size: clamp(1rem, 2vw, 1.5rem); color: var(--text-muted); max-width: 700px; margin-bottom: 40px; }
+
+/* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-top: 25px;
+}
 
 .btn {
   padding: 18px 45px; background: var(--accent); color: #fff; text-decoration: none;
@@ -150,6 +112,26 @@ nav a:hover { color: var(--accent); }
   box-shadow: var(--glow); transition: all 0.3s ease; display: inline-block;
 }
 .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(10, 132, 255, 0.4); }
+
+.btn-border {
+    padding: 18px 45px;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.1rem;
+    background: transparent;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-border:hover {
+    background: var(--accent);
+    color: white;
+    box-shadow: var(--glow);
+    transform: translateY(-5px);
+}
 
 /* Infinite Skills Marquee */
 .marquee-container { width: 100vw; overflow: hidden; padding: 20px 0; background: var(--glass-bg); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); margin: 50px 0; }
@@ -170,7 +152,7 @@ nav a:hover { color: var(--accent); }
 }
 .glass-card:hover::before { left: 150%; }
 
-/* Timeline (Experience & Education) */
+/* Timeline (Experience) */
 .timeline { position: relative; max-width: 800px; margin: 0 auto; }
 .timeline::before { content: ''; position: absolute; left: 20px; top: 0; width: 2px; height: 100%; background: var(--glass-border); }
 .timeline-item { position: relative; padding-left: 60px; margin-bottom: 40px; }
@@ -189,6 +171,21 @@ nav a:hover { color: var(--accent); }
 .project-links a { color: var(--accent); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 15px; margin-right: 15px; }
 .project-links a:hover { text-decoration: underline; }
 
+/* Education Section (FIXED ALIGNMENT & WIDTH) */
+#education {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the cards */
+  gap: 30px;
+}
+
+#education .glass-card {
+    width: 100%;
+    max-width: 600px; /* Forces both cards to be the exact same size */
+    margin: 0 !important; /* Overrides any HTML inline margins */
+    text-align: center;
+}
+
 /* Scroll Reveal Animation Classes */
 .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
 .reveal.active { opacity: 1; transform: translateY(0); }
@@ -204,39 +201,4 @@ nav a:hover { color: var(--accent); }
   /* Disable custom cursor on mobile to preserve touch controls */
   * { cursor: auto; }
   .cursor-dot, .cursor-outline { display: none; }
-}
-#education{
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-/* HERO BUTTON LAYOUT */
-.hero-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    margin-top: 25px;
-}
-
-/* Resume Border Button */
-.btn-border {
-    padding: 18px 45px; /* Matched padding to .btn so they are the same size */
-    border: 2px solid var(--accent);
-    color: var(--accent);
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 800; /* Matched font weight to .btn */
-    font-size: 1.1rem; /* Matched font size to .btn */
-    background: transparent;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.btn-border:hover {
-    background: var(--accent);
-    color: white;
-    box-shadow: var(--glow);
-    transform: translateY(-5px); /* Added hover lift to match .btn */
 }
