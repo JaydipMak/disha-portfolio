@@ -1,0 +1,28 @@
+{
+  "name": "disha-portfolio",
+  "version": "1.0.0",
+  "description": "Disha Jogi - iOS Developer Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaydipMak/disha-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JaydipMak/disha-portfolio/issues"
+  },
+  "homepage": "https://github.com/JaydipMak/disha-portfolio#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  },
+  "devDependencies": {
+    "vite": "^8.0.9"
+  }
+}
